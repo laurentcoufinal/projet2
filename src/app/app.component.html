@@ -1,2 +1,11 @@
-<router-outlet/>
-
+<nav class="nav">
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/login">Connexion</a>
+  <a routerLink="/register">Inscription</a>
+  <a routerLink="/students">Liste des étudiants</a>
+  <a routerLink="/students/update">Modifier un étudiant</a>
+  <a routerLink="/students/delete">Supprimer un étudiant</a>
+</nav>
+<main>
+  <router-outlet/>
+</main>

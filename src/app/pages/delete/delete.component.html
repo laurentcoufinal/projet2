@@ -1,0 +1,32 @@
+<p><a routerLink="/students">← Retour à la liste des étudiants</a></p>
+
+@if (loading) {
+  <p class="loading">Chargement…</p>
+} @else if (error && !student) {
+  <p class="error">{{ error }}</p>
+} @else if (student) {
+  <h2>Supprimer l'étudiant</h2>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  <p class="confirm">
+    Êtes-vous sûr de vouloir supprimer l'étudiant suivant ?
+  </p>
+  <dl class="student-info">
+    <dt>Login</dt>
+    <dd>{{ student.login }}</dd>
+    <dt>Prénom</dt>
+    <dd>{{ student.firstname }}</dd>
+    <dt>Nom</dt>
+    <dd>{{ student.lastname }}</dd>
+  </dl>
+
+  <div class="actions">
+    <button type="button" class="btn btn-danger" (click)="confirmDelete()" [disabled]="deleting">
+      {{ deleting ? 'Suppression…' : 'Confirmer la suppression' }}
+    </button>
+    <a routerLink="/students" class="btn btn-secondary">Annuler</a>
+  </div>
+}

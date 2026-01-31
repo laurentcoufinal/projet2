@@ -1,1 +1,46 @@
-<p>students works!</p>
+<p><a routerLink="/">← Retour à l'accueil</a></p>
+
+@if (loading) {
+  <p class="loading">Chargement des étudiants…</p>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else if (students.length === 0) {
+  <p class="empty">Aucun étudiant pour le moment.</p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Date création</th>
+        <th>Date mise à jour</th>
+        @if (mode === 'update' || mode === 'delete') {
+          <th></th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students; track student.id ?? student.login) {
+        <tr>
+          <td>{{ student.login }}</td>
+          <td>{{ student.firstname }}</td>
+          <td>{{ student.lastname }}</td>
+          <td>{{ student.datecreation ? (student.datecreation | date:'dd/MM/yy HH:mm:ss') : '' }}</td>
+          <td>{{ student.datemiseajour ? (student.datemiseajour | date:'dd/MM/yy HH:mm:ss') : '' }}</td>
+          @if (mode === 'update' || mode === 'delete') {
+            <td class="actions-cell">
+              @if (mode === 'update') {
+                <a [routerLink]="['/students/update', student.login]">Modifier</a>
+              }
+              @if (mode === 'delete') {
+                <a [routerLink]="['/students/delete', student.login]" class="link-delete">Supprimer</a>
+              }
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
