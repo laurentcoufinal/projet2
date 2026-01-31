@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
       login: this.registerForm.get('login')?.value,
       password: this.registerForm.get('password')?.value
     };
+    console.log('registerUser', registerUser);
     this.userService.register(registerUser)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(

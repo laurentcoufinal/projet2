@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-header text-center">Login</h5>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label for="login">Login</label>
+              <input
+                type="text"
+                id="login"
+                formControlName="login"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form['login'].errors }"
+              />
+              @if (submitted && form['login'].errors) {
+                <div class="invalid-feedback">
+                  @if (form['login'].errors?.['required']) {
+                    <div>Login is required</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form['password'].errors }"
+              />
+              @if (submitted && form['password'].errors) {
+                <div class="invalid-feedback">
+                  @if (form['password'].errors?.['required']) {
+                    <div>Password is required</div>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-primary mr-1" type="submit">Login</button>
+              <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
