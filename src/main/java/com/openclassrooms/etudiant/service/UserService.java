@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
 import java.util.Optional;
 
 @Slf4j
@@ -23,27 +22,37 @@ public class UserService {
 
     public void register(User user) {
         Assert.notNull(user, "User must not be null");
-        log.info("Registering new user");
-
-        Optional<User> optionalUser = userRepository.findByLogin(user.getLogin());
-        if (optionalUser.isPresent()) {
-            throw new IllegalArgumentException("User with login " + user.getLogin() + " already exists");
+    
+        if (userRepository.findByLogin(user.getLogin()).isPresent()) {
+            throw new IllegalArgumentException("User already exists");
         }
+    
+        // On encode LE MOT DE PASSE, pas un token
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+    
         userRepository.save(user);
     }
 
     public String login(String login, String password) {
         Assert.notNull(login, "Login must not be null");
         Assert.notNull(password, "Password must not be null");
-        Optional<User> user = userRepository.findByLogin(login);
-        if (user.isPresent() && passwordEncoder.matches(password, password)) {
-            UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
-                    .username(login).build();
-            return jwtService.generateToken(userDetails);
-        } else {
+    
+        User user = userRepository.findByLogin(login)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));
+    
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new IllegalArgumentException("Invalid credentials");
         }
+    
+        UserDetails userDetails = org.springframework.security.core.userdetails.User
+                .withUsername(user.getLogin())
+                .password(user.getPassword())
+                .authorities("USER")
+                .build();
+    
+        // Le token est généré et retourné, PAS stocké
+        //System.out.println("************* passer ici");
+        return jwtService.generateToken(userDetails);
     }
 
 

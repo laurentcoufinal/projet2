@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.testcontainers.containers.MySQLContainer;
@@ -24,7 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Testcontainers
+@ActiveProfiles("test")
+//@Testcontainers
 public class UserControllerTest {
 
     private static final String URL = "/api/register";
@@ -34,8 +36,8 @@ public class UserControllerTest {
     private static final String PASSWORD = "password";
 
 
-    @Container
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");
+    //@Container
+    //static MySQLContainer mySQLContainer = new MySQLContainer("mysql:latest");
 
     @Autowired
     private UserService userService;
@@ -47,13 +49,13 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @DynamicPropertySource
-    static void configureTestProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", () -> mySQLContainer.getJdbcUrl());
-        registry.add("spring.datasource.username", () -> mySQLContainer.getUsername());
-        registry.add("spring.datasource.password", () -> mySQLContainer.getPassword());
-        registry.add("spring.jpa.hibernate.ddl-auto", () -> "create");
+        static void configureTestProperties(DynamicPropertyRegistry registry) {
+            registry.add("spring.datasource.url", () -> "jdbc:h2:mem:testdb");
+            registry.add("spring.datasource.username", () -> "sa");
+            registry.add("spring.datasource.password", () -> "");
+            registry.add("spring.jpa.hibernate.ddl-auto", () -> "create");
 
-    }
+        }
 
     @AfterEach
     public void afterEach() {

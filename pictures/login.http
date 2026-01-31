@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "login": "john10",
+  "password": "password"
+}
+Authorization: "Bearer <token>"
