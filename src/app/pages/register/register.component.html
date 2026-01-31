@@ -64,13 +64,13 @@
         @if (submitted && form['password'].errors) {
           <div class="invalid-feedback">
             @if (form['password'].errors?.['required']) {
-              <div>password is required</div>
+              <div>Password is required</div>
             }
           </div>
         }
       </div>
       <div class="text-center">
-        <button class="btn btn-primary mr-1">Register</button>
+        <button class="btn btn-primary mr-1" type="submit">Register</button>
         <button class="btn btn-secondary" type="reset" (click)="onReset()">
           Cancel
         </button>

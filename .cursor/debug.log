@@ -1,10 +1,24 @@
-{"location":"login.component.ts:onSubmit","message":"onSubmit called","data":{"invalid":false},"timestamp":1769851815999,"sessionId":"debug-session","hypothesisId":"H5"}
-{"location":"user.service.ts:login map","message":"login response body","data":{"bodyType":"string","bodyKeys":[]},"timestamp":1769851816179,"sessionId":"debug-session","hypothesisId":"H2"}
-{"location":"user.service.ts:toLoginResponse","message":"toLoginResponse result","data":{"hasToken":true},"timestamp":1769851816179,"sessionId":"debug-session","hypothesisId":"H2"}
-{"location":"auth.service.ts:isAuthenticated","message":"isAuthenticated","data":{"hasToken":true},"timestamp":1769851816181,"sessionId":"debug-session","hypothesisId":"H4"}
-{"location":"login.component.ts:next","message":"login next","data":{"hasToken":true},"timestamp":1769851816179,"sessionId":"debug-session","hypothesisId":"H1"}
-{"location":"auth.service.ts:setToken","message":"setToken called","data":{"hasToken":true},"timestamp":1769851816180,"sessionId":"debug-session","hypothesisId":"H4"}
-{"location":"login.component.ts:setTokenDone","message":"setToken done, calling navigate","data":{},"timestamp":1769851816180,"sessionId":"debug-session","hypothesisId":"H3"}
-{"location":"auth.guard.ts","message":"guard run","data":{"authenticated":true,"allowing":true},"timestamp":1769851816182,"sessionId":"debug-session","hypothesisId":"H4"}
-{"location":"auth.service.ts:isAuthenticated","message":"isAuthenticated","data":{"hasToken":true},"timestamp":1769851838645,"sessionId":"debug-session","hypothesisId":"H4"}
-{"location":"auth.guard.ts","message":"guard run","data":{"authenticated":true,"allowing":true},"timestamp":1769851838646,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860155374,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860155401,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860156329,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860156349,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860157395,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860157411,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860160421,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860160945,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860161862,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:error","message":"error() called","data":{"status":0,"loginErrorSet":"Erreur de login. Réessayez ou contactez l'administrateur."},"timestamp":1769860161916,"sessionId":"debug-session","hypothesisId":"B,C,D"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860162656,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860162674,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860173700,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860173721,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860174627,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860174645,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860177140,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860177164,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860178017,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860178034,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860179389,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860179407,"sessionId":"debug-session","hypothesisId":"A,B"}
+{"location":"login.component.ts:onSubmit:entry","message":"onSubmit called","data":{},"timestamp":1769860180874,"sessionId":"debug-session","hypothesisId":"E"}
+{"location":"login.component.ts:subscribe:next","message":"next() called","data":{"hasToken":true},"timestamp":1769860180891,"sessionId":"debug-session","hypothesisId":"A,B"}

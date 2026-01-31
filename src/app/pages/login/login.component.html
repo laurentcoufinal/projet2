@@ -4,6 +4,11 @@
       <div class="card">
         <h5 class="card-header text-center">Login</h5>
         <div class="card-body">
+          @if (loginError) {
+            <div class="alert alert-danger login-error" role="alert">
+              {{ loginError }}
+            </div>
+          }
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group mb-3">
               <label for="login">Login</label>

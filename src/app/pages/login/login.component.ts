@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   loginForm: FormGroup = new FormGroup({});
-  submitted: boolean = false;
+  submitted = false;
+  /** Message d'erreur affiché dans l'UI (ex. "Erreur de login") */
+  loginError: string | null = null;
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -43,32 +45,37 @@ export class LoginComponent implements OnInit {
       login: this.loginForm.get('login')?.value ?? '',
       password: this.loginForm.get('password')?.value ?? ''
     };
+    this.loginError = null;
     this.userService.login(loginUser)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response) => {
           if (response?.token) {
             this.authService.setToken(response.token);
-            // Redirection au prochain cycle pour que le guard voie bien le token
             setTimeout(() => this.router.navigate(['/'], { replaceUrl: true }), 0);
           } else {
-            alert('Réponse de connexion invalide.');
+            this.loginError = 'Erreur de login : réponse invalide.';
           }
         },
-        error: (error) => {
-          console.error('Erreur de connexion:', { status: error?.status, body: error?.error, message: error?.message });
-          if (error?.status === 401) {
-            alert('Identifiants incorrects.');
-          } else if (error?.message?.includes('Token manquant')) {
-            alert('Le serveur n\'a pas renvoyé de token. Vérifiez la console (F12) pour voir la réponse.');
+        error: (err: { status?: number; message?: string }) => {
+          const status = err?.status;
+          const msg = err?.message ?? '';
+          if (status === 401) {
+            this.loginError = 'Erreur de login : identifiants incorrects.';
+          } else if (msg.includes('Token manquant')) {
+            this.loginError = 'Erreur de login : le serveur n\'a pas renvoyé de token.';
           } else {
-            alert('Erreur de connexion. Vérifiez la console (F12) pour plus de détails.');
+            this.loginError = 'Erreur de login. Réessayez ou contactez l\'administrateur.';
           }
-        }
+          if (typeof console !== 'undefined' && console.warn) {
+            console.warn('Login failed', { status });
+          }
+        },
       });
   }
   onReset(): void {
     this.submitted = false;
+    this.loginError = null;
     this.loginForm.reset();
   }
 }
