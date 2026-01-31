@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 import com.openclassrooms.etudiant.dto.UpdateDTO;
 
 
-@Mapper(componentModel = "spring",
+
+@Mapper(componentModel = "default",
         unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface UserDtoMapper {
     @Mapping(target = "id", ignore = true)
@@ -26,17 +27,22 @@ public interface UserDtoMapper {
     @Mapping(target = "firstName", source = "user.firstName")
     @Mapping(target = "lastName", source = "user.lastName")
     @Mapping(target = "login", source = "user.login")
+    @Mapping(target = "created_at", source = "user.created_at")
+    @Mapping(target = "updated_at", source = "user.updated_at")
     UserDTO toReadDTO(User user);
 
-
+    @Mapping(target = "id", source = "user.id")
     @Mapping(target = "firstName", source = "user.firstName")
     @Mapping(target = "lastName", source = "user.lastName")
     @Mapping(target = "login", source = "user.login")
+    @Mapping(target = "created_at", source = "user.created_at")
+    @Mapping(target = "updated_at", source = "user.updated_at")
     List<UserDTO> toReadDTOList(List<User> users);
 
     @Mapping(target = "firstName", source = "updateDTO.firstName")
     @Mapping(target = "lastName", source = "updateDTO.lastName")
     @Mapping(target = "id", source = "user.id")
     @Mapping(target = "updated_at", ignore = true)
+    @Mapping(target = "authorities", ignore = true)
     User toUpdateEntity(UpdateDTO updateDTO, User user);
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.security.access.prepost.PreAuthorize;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -41,7 +42,8 @@ public class UserController {
         user.setCreated_at(now);
         user.setUpdated_at(now);
         userService.register(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        var savedUser = userRepository.findByLogin(user.getLogin()).orElse(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userDtoMapper.toReadDTO(savedUser));
     }
 
     @PostMapping("/api/login")//login
@@ -65,7 +67,6 @@ public class UserController {
     @GetMapping("/api/read/students")
     public ResponseEntity<?> getAllStudents() {
         var users = userRepository.findAll();
-        // Suppose userDtoMapper has a method to map list of users
         return ResponseEntity.ok(users.stream().map(userDtoMapper::toReadDTO).toList());
     }
 
