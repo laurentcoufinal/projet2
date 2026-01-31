@@ -19,7 +19,7 @@ public interface UserDtoMapper {
     @Mapping(target = "firstName", source = "registerDTO.firstName")
     @Mapping(target = "lastName", source = "registerDTO.lastName")
     @Mapping(target = "login", source = "registerDTO.login")
-    @Mapping(target = "password", ignore = true)
+    @Mapping(target = "password", source = "registerDTO.password")
     @Mapping(target = "authorities", ignore = true)
     User toEntity(RegisterDTO registerDTO);
 

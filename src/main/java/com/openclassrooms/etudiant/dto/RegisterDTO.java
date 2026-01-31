@@ -16,10 +16,7 @@ public class RegisterDTO {
     private String login;
     @NotBlank
     private String password;
-    @NotBlank
     private LocalDateTime created_at;
-    @NotBlank
     private LocalDateTime updated_at;
-    @NotBlank
     private Collection<? extends GrantedAuthority> authorities;
 }

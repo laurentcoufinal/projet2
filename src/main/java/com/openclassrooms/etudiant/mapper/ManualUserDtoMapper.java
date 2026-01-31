@@ -21,6 +21,7 @@ public class ManualUserDtoMapper implements UserDtoMapper {
         user.setFirstName(registerDTO.getFirstName());
         user.setLastName(registerDTO.getLastName());
         user.setLogin(registerDTO.getLogin());
+        user.setPassword(registerDTO.getPassword());
         return user;
     }
 
