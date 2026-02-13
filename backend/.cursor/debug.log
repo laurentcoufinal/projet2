@@ -1,0 +1,34 @@
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769856396537,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":false},"timestamp":1769856396809,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1769856396831,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/delete/student/login","hasBearer":false},"timestamp":1769856396967,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":false},"timestamp":1769856397025,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769856397051,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/student/login","hasBearer":false},"timestamp":1769856397156,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1769856397255,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1769856397279,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/update/student/login","hasBearer":false},"timestamp":1769856397428,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769859182737,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769859204503,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769859229811,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":true},"timestamp":1769859232508,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:setAuth","message":"auth set + saved to request","data":{"uri":"/api/read/students"},"timestamp":1769859232607,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:beforeChain","message":"before doFilter","data":{"uri":"/api/read/students","authInContext":true},"timestamp":1769859232608,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":true},"timestamp":1769859405070,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:setAuth","message":"auth set + saved to request","data":{"uri":"/api/read/students"},"timestamp":1769859405155,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:beforeChain","message":"before doFilter","data":{"uri":"/api/read/students","authInContext":true},"timestamp":1769859405156,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":true},"timestamp":1769859411012,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:setAuth","message":"auth set + saved to request","data":{"uri":"/api/read/students"},"timestamp":1769859411037,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:beforeChain","message":"before doFilter","data":{"uri":"/api/read/students","authInContext":true},"timestamp":1769859411038,"sessionId":"debug-session","hypothesisId":"H7"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769859466423,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1769859493572,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1770994010526,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":false},"timestamp":1770994010811,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1770994010832,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/delete/student/login","hasBearer":false},"timestamp":1770994010961,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/students","hasBearer":false},"timestamp":1770994011014,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/login","hasBearer":false},"timestamp":1770994011037,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/read/student/login","hasBearer":false},"timestamp":1770994011131,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1770994011215,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/register","hasBearer":false},"timestamp":1770994011244,"sessionId":"debug-session","hypothesisId":"H8"}
+{"location":"wtAuthenticationFilter.java:entry","message":"filter entry","data":{"uri":"/api/update/student/login","hasBearer":false},"timestamp":1770994011422,"sessionId":"debug-session","hypothesisId":"H8"}
