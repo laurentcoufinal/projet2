@@ -1,0 +1,206 @@
+
+> etudiant-frontend@0.0.0 coverage:check
+> jest --coverage --ci
+
+PASS src/app/core/service/auth.service.spec.ts
+PASS src/app/core/interceptors/auth.interceptor.spec.ts
+PASS src/app/auth.guard.spec.ts
+PASS src/app/core/service/user.service.spec.ts
+  ● Console
+
+    console.log
+      login { login: 'user', password: 'pass' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.log
+      login { login: 'user', password: 'pass' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.log
+      login { login: 'u', password: 'p' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.log
+      login { login: 'u', password: 'p' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.log
+      register { firstName: 'A', lastName: 'B', login: 'ab', password: 'p' }
+
+      at UserService.log [as register] (src/app/core/service/user.service.ts:17:13)
+
+    console.log
+      login { login: 'u', password: 'p' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.log
+      login { login: 'u', password: 'p' }
+
+      at UserService.log [as login] (src/app/core/service/user.service.ts:22:13)
+
+    console.error
+      Réponse login (aucun token trouvé). Réponse reçue:
+
+      45 |     const token = this.extractTokenFromResponse(body);
+      46 |     if (!token) {
+    > 47 |       console.error('Réponse login (aucun token trouvé). Réponse reçue:', body);
+         |               ^
+      48 |       return null;
+      49 |     }
+      50 |     return { token };
+
+      at UserService.error [as toLoginResponse] (src/app/core/service/user.service.ts:47:15)
+      at toLoginResponse (src/app/core/service/user.service.ts:29:26)
+      at node_modules/rxjs/src/internal/operators/map.ts:57:33
+      at OperatorSubscriber._this._next (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:70:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.next (node_modules/rxjs/src/internal/Subscriber.ts:71:12)
+      at node_modules/rxjs/src/internal/operators/map.ts:57:20
+      at OperatorSubscriber._this._next (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:70:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.next (node_modules/rxjs/src/internal/Subscriber.ts:71:12)
+      at node_modules/rxjs/src/internal/operators/filter.ts:72:109
+      at OperatorSubscriber._this._next (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:70:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.next (node_modules/rxjs/src/internal/Subscriber.ts:71:12)
+      at node_modules/rxjs/src/internal/operators/mergeInternals.ts:85:24
+      at OperatorSubscriber._this._next (node_modules/rxjs/src/internal/operators/OperatorSubscriber.ts:70:13)
+      at OperatorSubscriber.Object.<anonymous>.Subscriber.next (node_modules/rxjs/src/internal/Subscriber.ts:71:12)
+      at TestRequest.flush (node_modules/@angular/common/fesm2022/http/testing.mjs:79:27)
+      at src/app/core/service/user.service.spec.ts:182:9
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+
+PASS src/app/pages/home/home.component.spec.ts
+PASS src/app/pages/students/students.component.spec.ts
+PASS src/app/app.component.spec.ts
+PASS src/app/pages/delete/delete.component.spec.ts
+PASS src/app/pages/update/update.component.spec.ts
+PASS src/app/pages/register/register.component.spec.ts
+  ● Console
+
+    console.log
+      registerUser { firstName: 'A', lastName: 'B', login: 'ab', password: 'p' }
+
+      at RegisterComponent.log [as onSubmit] (src/app/pages/register/register.component.ts:51:13)
+
+PASS src/app/pages/login/login.component.spec.ts
+  ● Console
+
+    console.warn
+      Login failed { status: 401 }
+
+      69 |           }
+      70 |           if (typeof console !== 'undefined' && console.warn) {
+    > 71 |             console.warn('Login failed', { status });
+         |                     ^
+      72 |           }
+      73 |         },
+      74 |       });
+
+      at Object.warn [as error] (src/app/pages/login/login.component.ts:71:21)
+      at ConsumerObserver.Object.<anonymous>.ConsumerObserver.error (node_modules/rxjs/src/internal/Subscriber.ts:166:25)
+      at SafeSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at SafeSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/takeUntil.ts:48:34
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at LoginComponent.subscribe [as onSubmit] (src/app/pages/login/login.component.ts:51:8)
+      at src/app/pages/login/login.component.spec.ts:80:15
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+
+    console.warn
+      Login failed { status: undefined }
+
+      69 |           }
+      70 |           if (typeof console !== 'undefined' && console.warn) {
+    > 71 |             console.warn('Login failed', { status });
+         |                     ^
+      72 |           }
+      73 |         },
+      74 |       });
+
+      at Object.warn [as error] (src/app/pages/login/login.component.ts:71:21)
+      at ConsumerObserver.Object.<anonymous>.ConsumerObserver.error (node_modules/rxjs/src/internal/Subscriber.ts:166:25)
+      at SafeSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at SafeSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/takeUntil.ts:48:34
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at LoginComponent.subscribe [as onSubmit] (src/app/pages/login/login.component.ts:51:8)
+      at src/app/pages/login/login.component.spec.ts:87:15
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+
+    console.warn
+      Login failed { status: 500 }
+
+      69 |           }
+      70 |           if (typeof console !== 'undefined' && console.warn) {
+    > 71 |             console.warn('Login failed', { status });
+         |                     ^
+      72 |           }
+      73 |         },
+      74 |       });
+
+      at Object.warn [as error] (src/app/pages/login/login.component.ts:71:21)
+      at ConsumerObserver.Object.<anonymous>.ConsumerObserver.error (node_modules/rxjs/src/internal/Subscriber.ts:166:25)
+      at SafeSubscriber.Object.<anonymous>.Subscriber._error (node_modules/rxjs/src/internal/Subscriber.ts:118:24)
+      at SafeSubscriber.Object.<anonymous>.Subscriber.error (node_modules/rxjs/src/internal/Subscriber.ts:86:12)
+      at Observable.init [as _subscribe] (node_modules/rxjs/src/internal/observable/throwError.ts:123:62)
+      at Observable.Object.<anonymous>.Observable._trySubscribe (node_modules/rxjs/src/internal/Observable.ts:235:19)
+      at node_modules/rxjs/src/internal/Observable.ts:225:18
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at node_modules/rxjs/src/internal/operators/takeUntil.ts:48:34
+      at SafeSubscriber.<anonymous> (node_modules/rxjs/src/internal/util/lift.ts:24:18)
+      at node_modules/rxjs/src/internal/Observable.ts:217:22
+      at Object.errorContext (node_modules/rxjs/src/internal/util/errorContext.ts:29:5)
+      at Observable.Object.<anonymous>.Observable.subscribe (node_modules/rxjs/src/internal/Observable.ts:211:5)
+      at LoginComponent.subscribe [as onSubmit] (src/app/pages/login/login.component.ts:51:8)
+      at src/app/pages/login/login.component.spec.ts:94:15
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:410:32)
+      at ProxyZoneSpec.Object.<anonymous>.ProxyZoneSpec.onInvoke (node_modules/zone.js/bundles/zone-testing.umd.js:2219:43)
+      at _ZoneDelegate.invoke (node_modules/zone.js/bundles/zone.umd.js:409:38)
+      at ZoneImpl.run (node_modules/zone.js/bundles/zone.umd.js:145:47)
+      at Object.wrappedFunc (node_modules/zone.js/bundles/zone-testing.umd.js:449:38)
+
+
+=============================== Coverage summary ===============================
+Statements   : 95.83% ( 276/288 )
+Branches     : 65.78% ( 75/114 )
+Functions    : 92.3% ( 48/52 )
+Lines        : 95.75% ( 248/259 )
+================================================================================
+
+Test Suites: 11 passed, 11 total
+Tests:       59 passed, 59 total
+Snapshots:   0 total
+Time:        7.886 s
+Ran all test suites.

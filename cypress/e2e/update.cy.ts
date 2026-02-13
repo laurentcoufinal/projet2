@@ -109,4 +109,67 @@ describe('Page Modifier un étudiant', () => {
     cy.contains('a', 'Annuler').click();
     cy.url().should('include', '/students');
   });
+
+  it('should show loading then form when GET student has delay', () => {
+    cy.intercept('GET', '/api/read/student/john', (req) => {
+      req.reply({
+        delay: 200,
+        statusCode: 200,
+        body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+      });
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/update/john');
+    cy.contains('Chargement…').should('be.visible');
+    cy.wait('@getStudent');
+    cy.get('input#firstname').should('have.value', 'John');
+  });
+
+  it('should display error when GET student returns 404', () => {
+    cy.intercept('GET', '/api/read/student/unknown', {
+      statusCode: 404,
+      body: {},
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/update/unknown');
+    cy.wait('@getStudent');
+    cy.get('.error').should('be.visible');
+    cy.contains('Étudiant introuvable').should('be.visible');
+  });
+
+  it('should display error and stay on page when PUT returns error', () => {
+    cy.intercept('GET', '/api/read/student/john', {
+      statusCode: 200,
+      body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+    }).as('getStudent');
+    cy.intercept('PUT', '/api/update/student/john', {
+      statusCode: 500,
+      body: { message: 'Server Error' },
+    }).as('updateStudent');
+
+    cy.login();
+    cy.visit('/students/update/john');
+    cy.wait('@getStudent');
+    cy.get('input#firstname').clear().type('Jean');
+    cy.get('input#lastname').clear().type('Dupont');
+    cy.get('button[type="submit"]').click();
+    cy.wait('@updateStudent');
+    cy.url().should('include', '/students/update/john');
+    cy.get('.error').should('be.visible');
+  });
+
+  it('should navigate to list when clicking "Retour à la liste des étudiants"', () => {
+    cy.intercept('GET', '/api/read/student/john', {
+      statusCode: 200,
+      body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/update/john');
+    cy.wait('@getStudent');
+    cy.contains('a', 'Retour à la liste des étudiants').click();
+    cy.url().should('include', '/students');
+  });
 });

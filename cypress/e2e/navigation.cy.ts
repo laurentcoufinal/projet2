@@ -38,4 +38,60 @@ describe('Navigation', () => {
     cy.contains('a', 'Accueil').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/');
   });
+
+  it('should redirect to login when clicking "Liste des étudiants" without authentication', () => {
+    cy.contains('a', 'Liste des étudiants').click();
+    cy.url().should('include', '/login');
+  });
+
+  it('should navigate to students list when clicking "Liste des étudiants" when authenticated', () => {
+    cy.intercept('GET', '/api/read/students', { statusCode: 200, body: [] }).as('students');
+    cy.login();
+    cy.visit('/');
+    cy.contains('a', 'Liste des étudiants').click();
+    cy.url().should('include', '/students');
+    cy.wait('@students');
+  });
+
+  it('should navigate to update list when clicking "Modifier un étudiant" when authenticated', () => {
+    cy.intercept('GET', '/api/read/students', { statusCode: 200, body: [] }).as('students');
+    cy.login();
+    cy.visit('/');
+    cy.contains('a', 'Modifier un étudiant').click();
+    cy.url().should('include', '/students/update');
+    cy.wait('@students');
+  });
+
+  it('should navigate to delete list when clicking "Supprimer un étudiant" when authenticated', () => {
+    cy.intercept('GET', '/api/read/students', { statusCode: 200, body: [] }).as('students');
+    cy.login();
+    cy.visit('/');
+    cy.contains('a', 'Supprimer un étudiant').click();
+    cy.url().should('include', '/students/delete');
+    cy.wait('@students');
+  });
+
+  it('should show students list with "Modifier" links on students/update page', () => {
+    cy.intercept('GET', '/api/read/students', {
+      statusCode: 200,
+      body: [{ id: 1, login: 'john', firstName: 'John', lastName: 'Doe', created_at: '', updated_at: '' }],
+    }).as('students');
+    cy.login();
+    cy.visit('/students/update');
+    cy.wait('@students');
+    cy.get('table').should('be.visible');
+    cy.contains('a', 'Modifier').should('be.visible');
+  });
+
+  it('should show students list with "Supprimer" links on students/delete page', () => {
+    cy.intercept('GET', '/api/read/students', {
+      statusCode: 200,
+      body: [{ id: 1, login: 'john', firstName: 'John', lastName: 'Doe', created_at: '', updated_at: '' }],
+    }).as('students');
+    cy.login();
+    cy.visit('/students/delete');
+    cy.wait('@students');
+    cy.get('table').should('be.visible');
+    cy.contains('a', 'Supprimer').should('be.visible');
+  });
 });

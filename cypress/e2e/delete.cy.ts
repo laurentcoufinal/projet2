@@ -88,4 +88,65 @@ describe('Page Supprimer un étudiant', () => {
     cy.contains('a', 'Annuler').click();
     cy.url().should('include', '/students');
   });
+
+  it('should show loading then confirmation when GET student has delay', () => {
+    cy.intercept('GET', '/api/read/student/john', (req) => {
+      req.reply({
+        delay: 200,
+        statusCode: 200,
+        body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+      });
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/delete/john');
+    cy.contains('Chargement…').should('be.visible');
+    cy.wait('@getStudent');
+    cy.get('dl.student-info').should('contain', 'john');
+  });
+
+  it('should display error when GET student returns 404', () => {
+    cy.intercept('GET', '/api/read/student/unknown', {
+      statusCode: 404,
+      body: {},
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/delete/unknown');
+    cy.wait('@getStudent');
+    cy.get('.error').should('be.visible');
+    cy.contains('Étudiant introuvable').should('be.visible');
+  });
+
+  it('should display error and stay on page when DELETE returns error', () => {
+    cy.intercept('GET', '/api/read/student/john', {
+      statusCode: 200,
+      body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+    }).as('getStudent');
+    cy.intercept('DELETE', '/api/delete/student/john', {
+      statusCode: 500,
+      body: {},
+    }).as('deleteStudent');
+
+    cy.login();
+    cy.visit('/students/delete/john');
+    cy.wait('@getStudent');
+    cy.get('button.btn-danger').click();
+    cy.wait('@deleteStudent');
+    cy.url().should('include', '/students/delete/john');
+    cy.get('.error').should('be.visible');
+  });
+
+  it('should navigate to list when clicking "Retour à la liste des étudiants"', () => {
+    cy.intercept('GET', '/api/read/student/john', {
+      statusCode: 200,
+      body: { login: 'john', firstname: 'John', lastname: 'Doe' },
+    }).as('getStudent');
+
+    cy.login();
+    cy.visit('/students/delete/john');
+    cy.wait('@getStudent');
+    cy.contains('a', 'Retour à la liste des étudiants').click();
+    cy.url().should('include', '/students');
+  });
 });

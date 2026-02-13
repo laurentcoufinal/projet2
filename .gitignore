@@ -33,6 +33,11 @@ yarn-error.log
 .sass-cache/
 /connect.lock
 /coverage
+/coverage-e2e
+.nyc_output
+jest-results.json
+/instrumented
+/instrumented-dev
 /libpeerconnection.log
 testem.log
 /typings

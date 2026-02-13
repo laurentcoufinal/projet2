@@ -23,26 +23,29 @@ describe('Login page', () => {
   });
 
   it('should stay on login when API returns 401', () => {
-    // Forcer l'échec réseau pour ce test : l'intercept 401 ne s'applique pas avec le proxy dev,
-    // la requête reçoit 200+token → on utilise forceNetworkError pour que error() s'exécute.
-    cy.intercept(
-      { method: 'POST', pathname: '/api/login' },
-      { forceNetworkError: true }
-    ).as('loginRequest');
+    cy.intercept('POST', '/api/login', {
+      statusCode: 401,
+      body: {},
+    }).as('loginRequest');
 
-    cy.visit('/login', {
-      onBeforeLoad(win) {
-        win.localStorage.clear();
-      },
-    });
-
+    cy.visit('/login', { onBeforeLoad: (win) => win.localStorage.clear() });
     cy.get('input#login').type('baduser');
     cy.get('input#password').type('badpass');
     cy.get('button[type="submit"]').click();
 
-    cy.contains('.login-error, .alert-danger', 'Erreur de login', { timeout: 15000 }).should('be.visible');
+    cy.wait('@loginRequest');
+    cy.contains('.login-error, .alert-danger', 'Erreur de login', { timeout: 5000 }).should('be.visible');
     cy.url().should('include', '/login');
-    cy.get('input#login').should('be.visible');
+  });
+
+  it('should show identifiants incorrects when API returns 401', () => {
+    cy.intercept('POST', '/api/login', { statusCode: 401, body: {} }).as('login');
+    cy.visit('/login', { onBeforeLoad: (win) => win.localStorage.clear() });
+    cy.get('input#login').type('user');
+    cy.get('input#password').type('wrong');
+    cy.get('button[type="submit"]').click();
+    cy.wait('@login');
+    cy.contains('identifiants incorrects').should('be.visible');
   });
 
   it('should redirect to home after successful login when API returns token', () => {
@@ -61,5 +64,29 @@ describe('Login page', () => {
 
     cy.wait('@login');
     cy.url().should('eq', Cypress.config().baseUrl + '/');
+  });
+
+  it('should redirect to home when API returns token as JSON object', () => {
+    cy.intercept('POST', '/api/login', {
+      statusCode: 200,
+      body: { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.json-token' },
+    }).as('login');
+    cy.intercept('GET', '/api/read/students', { statusCode: 200, body: [] }).as('students');
+
+    cy.get('input#login').type('user');
+    cy.get('input#password').type('pass');
+    cy.get('button[type="submit"]').click();
+
+    cy.wait('@login');
+    cy.url().should('eq', Cypress.config().baseUrl + '/');
+  });
+
+  it('should reset form and stay on login when clicking Cancel', () => {
+    cy.get('input#login').type('something');
+    cy.get('input#password').type('something');
+    cy.contains('button', 'Cancel').click();
+    cy.get('input#login').should('have.value', '');
+    cy.get('input#password').should('have.value', '');
+    cy.url().should('include', '/login');
   });
 });
