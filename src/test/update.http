@@ -1,0 +1,8 @@
+PUT http://localhost:8080/api/update/student/laurent
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYXVyZW50IiwiaWF0IjoxNzY5ODQxNTUyLCJleHAiOjE3Njk5Mjc5NTJ9.IRtFreHQ-Z7LRlLIWCJpMbw8c8hzOmMRY_22ibmJn14
+Content-Type: application/json
+
+{
+  "firstName": "Laurent",
+  "lastName": "bob"
+}
